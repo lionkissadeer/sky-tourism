@@ -18,6 +18,7 @@ public class DefaultUserService implements UserService {
 
     @Override
     public User getUserBy(String id) {
+//        return userRepository.findById(id);
         return new User(id, "lionkissadeer");
     }
 }
