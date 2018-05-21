@@ -8,4 +8,6 @@ import com.skytech.skytourism.usermanagement.domain.model.User;
 public interface UserService {
 
     User getUserBy(String id);
+
+    void register(User user);
 }

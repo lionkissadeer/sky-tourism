@@ -2,10 +2,7 @@ package com.skytech.skytourism.usermanagement.controller;
 
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -24,4 +21,8 @@ public class UserController {
         return userService.getUserBy(id);
     }
 
+    @PostMapping(value = "/register")
+    public void register(User user) {
+        userService.register(user);
+    }
 }

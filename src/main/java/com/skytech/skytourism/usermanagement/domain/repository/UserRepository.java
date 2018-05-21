@@ -7,5 +7,9 @@ import com.skytech.skytourism.usermanagement.domain.model.User;
  */
 public interface UserRepository {
 
-    User findById(String name);
+    User findById(String id);
+
+    void saveUser(User user);
+
+    boolean userIsExist(String name);
 }

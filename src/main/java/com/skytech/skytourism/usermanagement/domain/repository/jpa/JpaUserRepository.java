@@ -1,3 +1,4 @@
+
 package com.skytech.skytourism.usermanagement.domain.repository.jpa;
 
 import com.skytech.skytourism.usermanagement.domain.model.User;
@@ -10,5 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository(value = "jpaUserRepository")
 public interface JpaUserRepository extends CrudRepository<User, String> {
 
-    User findByNameLike(String name);
+    User findByNameLike(String username);
 }
+

@@ -1,12 +1,12 @@
 package com.skytech.skytourism.usermanagement.domain.model;
 
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Lianhong_ on 2018/05/18 11:54
@@ -17,22 +17,12 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     private String id;
-
     private String name;
     private String password;
     private String gender;
     private Integer age;
-    private Date birthday;
+    private String birthday;
     private String remark;
-
-    public User() {
-    }
-
-    public User(String id, String name) {
-        this.id = id;
-        this.name = name;
-        this.password = "p@ssw0rd";
-    }
 
     public String getId() {
         return id;
@@ -74,11 +64,11 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -88,5 +78,18 @@ public class User implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", birthday=" + birthday +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 }

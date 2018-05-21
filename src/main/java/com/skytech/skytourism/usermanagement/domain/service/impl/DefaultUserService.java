@@ -1,5 +1,6 @@
 package com.skytech.skytourism.usermanagement.domain.service.impl;
 
+import com.skytech.skytourism.usermanagement.domain.exception.UserException;
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.repository.UserRepository;
 import com.skytech.skytourism.usermanagement.domain.service.UserService;
@@ -18,7 +19,13 @@ public class DefaultUserService implements UserService {
 
     @Override
     public User getUserBy(String id) {
-//        return userRepository.findById(id);
-        return new User(id, "lionkissadeer");
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public void register(User user) {
+        if (userRepository.userIsExist(user.getName()))
+            throw new UserException("用户已存在。");
+        userRepository.saveUser(user);
     }
 }
