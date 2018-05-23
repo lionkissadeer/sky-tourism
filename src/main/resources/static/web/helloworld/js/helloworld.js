@@ -4,7 +4,7 @@ var vm = new Vue({
         message: 'Biu biu biu ...'
     },
     mounted: function () {
-
+        this.message = _aes.encrypt("p@ssw0rd");
     },
     methods: {}
 });

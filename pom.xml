@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>sky-tourism</name>
+    <username>sky-tourism</username>
     <description>Biu biu biu ...</description>
 
     <parent>

@@ -1,4 +1,4 @@
-package com.skytech.skytourism.application.idgen;
+package com.skytech.application.idgen;
 
 /**
  * Created by Lianhong_ on 2018/05/18 15:00

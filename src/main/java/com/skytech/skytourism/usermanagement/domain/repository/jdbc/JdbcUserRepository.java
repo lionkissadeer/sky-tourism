@@ -1,6 +1,6 @@
 package com.skytech.skytourism.usermanagement.domain.repository.jdbc;
 
-import com.skytech.skytourism.application.idgen.IdentityGenerator;
+import com.skytech.application.idgen.IdentityGenerator;
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.repository.UserRepository;
 import org.slf4j.Logger;
@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Lianhong_ on 2018/05/18 11:51
@@ -28,7 +29,16 @@ public class JdbcUserRepository implements UserRepository {
     @Resource(name = "identityGenerator")
     private IdentityGenerator identityGenerator;
 
-    private String findByNameSql = "select id, name, password, " +
+
+    private String getUsersSql = "select id, username," +
+            " gender, age, birthday, remark from user";
+
+    @Override
+    public List<User> getUsers() {
+        return namedParameterJdbcTemplate.getJdbcOperations().query(getUsersSql, new BeanPropertyRowMapper<>(User.class));
+    }
+
+    private String findByNameSql = "select id, username, password, " +
             "gender, age, birthday, remark from user where id = ?";
 
     @Override
@@ -42,8 +52,8 @@ public class JdbcUserRepository implements UserRepository {
         }
     }
 
-    private String insertUserSql = "insert into user (id, name, password, gender, age, birthday, remark)" +
-            "values(:id, :name, :password, :gender, :age, :birthday, :remark)";
+    private String insertUserSql = "insert into user (id, username, password, gender, age, birthday, remark)" +
+            "values(:id, :username, :password, :gender, :age, :birthday, :remark)";
 
     @Override
     public void saveUser(User user) {
@@ -55,10 +65,18 @@ public class JdbcUserRepository implements UserRepository {
         }
     }
 
-    private String userIsExistSql = "select count(1) from user where name = ?";
+    private String userIsExistSql = "select count(1) from user where username = ?";
 
     @Override
-    public boolean userIsExist(String name) {
-        return namedParameterJdbcTemplate.getJdbcOperations().queryForObject(userIsExistSql, Boolean.class, name);
+    public boolean userIsExist(String username) {
+        return namedParameterJdbcTemplate.getJdbcOperations().queryForObject(userIsExistSql, Boolean.class, username);
+    }
+
+    private String userIsExistByUsernameAndPasswordSql = "select count(1) from user where username = ? and password = ?";
+
+    @Override
+    public boolean userIsExist(String username, String password) {
+        return namedParameterJdbcTemplate.getJdbcOperations().
+                queryForObject(userIsExistByUsernameAndPasswordSql, Boolean.class, username, password);
     }
 }

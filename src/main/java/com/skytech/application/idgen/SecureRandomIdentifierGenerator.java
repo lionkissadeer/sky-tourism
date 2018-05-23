@@ -1,4 +1,4 @@
-package com.skytech.skytourism.application.idgen;
+package com.skytech.application.idgen;
 
 import org.springframework.stereotype.Component;
 

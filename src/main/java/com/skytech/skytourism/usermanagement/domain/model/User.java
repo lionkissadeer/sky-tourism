@@ -1,28 +1,42 @@
 package com.skytech.skytourism.usermanagement.domain.model;
 
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.ResourceSupport;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Lianhong_ on 2018/05/18 11:54
  */
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue
     private String id;
-    private String name;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "password")
     private String password;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "age")
     private Integer age;
+    @Column(name = "birthday")
     private String birthday;
+    @Column(name = "remark")
     private String remark;
+
+    public User() {
+    }
+
+    public User(String id, String username, String gender, Integer age, String birthday, String remark) {
+        this.id = id;
+        this.username = username;
+        this.gender = gender;
+        this.age = age;
+        this.birthday = birthday;
+        this.remark = remark;
+    }
 
     public String getId() {
         return id;
@@ -32,12 +46,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -84,7 +98,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
