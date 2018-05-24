@@ -1,5 +1,9 @@
 package com.skytech.skytourism.usermanagement.domain.model;
 
+
+import com.skytech.application.hateoas.ResourceSupport;
+import org.springframework.hateoas.Link;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,7 +12,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User extends ResourceSupport implements Serializable{
 
     @Id
     @GeneratedValue
@@ -25,6 +29,8 @@ public class User implements Serializable {
     private String birthday;
     @Column(name = "remark")
     private String remark;
+    @Column(name = "role")
+    private String role;
 
     public User() {
     }
@@ -94,16 +100,18 @@ public class User implements Serializable {
         this.remark = remark;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    /********************************************************/
+
     @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                ", birthday=" + birthday +
-                ", remark='" + remark + '\'' +
-                '}';
+    public void add(Link link) {
+        super.add(link);
     }
 }

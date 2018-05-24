@@ -18,4 +18,6 @@ public interface UserRepository {
     boolean userIsExist(String username);
 
     boolean userIsExist(String username, String password);
+
+    User findUserByName(String username);
 }

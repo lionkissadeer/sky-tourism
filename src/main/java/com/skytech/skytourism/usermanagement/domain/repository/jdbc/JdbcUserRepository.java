@@ -38,14 +38,14 @@ public class JdbcUserRepository implements UserRepository {
         return namedParameterJdbcTemplate.getJdbcOperations().query(getUsersSql, new BeanPropertyRowMapper<>(User.class));
     }
 
-    private String findByNameSql = "select id, username, password, " +
+    private String findByIdSql = "select id, username, password, " +
             "gender, age, birthday, remark from user where id = ?";
 
     @Override
     public User findById(String id) {
         try {
             return namedParameterJdbcTemplate.getJdbcOperations()
-                    .queryForObject(findByNameSql, new BeanPropertyRowMapper<>(User.class), id);
+                    .queryForObject(findByIdSql, new BeanPropertyRowMapper<>(User.class), id);
         } catch (DataAccessException e) {
             logger.error("查询用户信息失败。", e);
             return null;
@@ -78,5 +78,19 @@ public class JdbcUserRepository implements UserRepository {
     public boolean userIsExist(String username, String password) {
         return namedParameterJdbcTemplate.getJdbcOperations().
                 queryForObject(userIsExistByUsernameAndPasswordSql, Boolean.class, username, password);
+    }
+
+    private String findUserByNameSql = "select id, username, password, " +
+            "gender, age, birthday, remark, role from user where username = ?";
+
+    @Override
+    public User findUserByName(String username) {
+        try {
+            return namedParameterJdbcTemplate.getJdbcOperations()
+                    .queryForObject(findUserByNameSql, new BeanPropertyRowMapper<>(User.class), username);
+        } catch (DataAccessException e) {
+            logger.error("根据用户名查询用户信息失败。", e);
+            return null;
+        }
     }
 }

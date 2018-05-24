@@ -2,10 +2,14 @@ package com.skytech.skytourism.usermanagement.controller;
 
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 /**
  * Created by Lianhong_ on 2018/05/18 11:51
@@ -18,8 +22,12 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> users() {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> users() {
+        List<User> users = userService.getUsers();
+        for (User user : users) {
+            user.add(linkTo(methodOn(UserController.class).users()).withSelfRel());
+        }
+        return new ResponseEntity<> (users, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
