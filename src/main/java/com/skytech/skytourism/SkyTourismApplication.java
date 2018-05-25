@@ -1,7 +1,7 @@
 package com.skytech.skytourism;
 
-import com.skytech.skytourism.usermanagement.domain.filter.HTTPBearerAuthorizeAttribute;
-import com.skytech.skytourism.usermanagement.domain.jwt.Audience;
+import com.skytech.application.jwt.Audience;
+import com.skytech.application.jwt.filter.HTTPBearerAuthorizeAttribute;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -26,13 +26,13 @@ public class SkyTourismApplication {
      *
      * @return
      */
-    /*@Bean
-    public FilterRegistrationBean jwtFilterRegistrationBean() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new HTTPBearerAuthorizeAttribute());
-        List<String> urlPatterns = new ArrayList<>();
-        urlPatterns.add("/users/*");
-        registrationBean.setUrlPatterns(urlPatterns);
-        return registrationBean;
-    }*/
+//    @Bean
+//    public FilterRegistrationBean jwtFilterRegistrationBean() {
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//        registrationBean.setFilter(new HTTPBearerAuthorizeAttribute());
+//        List<String> urlPatterns = new ArrayList<>();
+//        urlPatterns.add("/users/*");
+//        registrationBean.setUrlPatterns(urlPatterns);
+//        return registrationBean;
+//    }
 }

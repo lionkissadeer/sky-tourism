@@ -1,48 +1,54 @@
 package com.skytech.skytourism.usermanagement.controller;
 
+import com.skytech.skytourism.usermanagement.controller.resource.UserResourceAssembler;
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.service.UserService;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import java.util.List;
-
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 /**
  * Created by Lianhong_ on 2018/05/18 11:51
  */
 @RestController
-@RequestMapping(value = "users")
 public class UserController {
 
-    @Resource(name = "userService")
+    @Autowired
+    @Qualifier("userService")
     private UserService userService;
 
-    @GetMapping
-    public ResponseEntity<List<User>> users() {
-        List<User> users = userService.getUsers();
-        for (User user : users) {
-            user.add(linkTo(methodOn(UserController.class).users()).withSelfRel());
-        }
-        return new ResponseEntity<> (users, HttpStatus.OK);
+    @Autowired
+    private UserResourceAssembler assembler;
+
+    @PostMapping(value = "/register", produces = MediaTypes.HAL_JSON_VALUE)
+    public ResponseEntity<Resource<User>> register(@RequestBody User user) {
+        return ResponseEntity.ok(assembler.toResource(userService.register(user)));
     }
 
-    @GetMapping(value = "/{id}")
-    public User userInfo(@PathVariable(value = "id") String id) {
-        return userService.getUserBy(id);
+    @PostMapping(value = "/users/login", produces = MediaTypes.HAL_JSON_VALUE)
+    public ResponseEntity<Resource<User>> login(@RequestBody User user) {
+        return ResponseEntity.ok(assembler.toResource(userService.login(user.getUsername(), user.getPassword())));
     }
 
-    @PostMapping(value = "/register")
-    public void register(User user) {
-        userService.register(user);
+    @GetMapping(value = "/users", produces = MediaTypes.HAL_JSON_VALUE)
+    public ResponseEntity<Resources<Resource<User>>> users() {
+        return ResponseEntity.ok(assembler.toResources(userService.getUsers()));
     }
 
-    @PostMapping(value = "/login")
-    public User login(@RequestParam("username") String username,
-                      @RequestParam("password") String password) {
-        return userService.login(username, password);
+    @GetMapping(value = "/users/{id}", produces = MediaTypes.HAL_JSON_VALUE)
+    public ResponseEntity<Resource<User>> userInfo(@PathVariable(value = "id") String id) {
+        return ResponseEntity.ok(assembler.toResource(userService.getUserBy(id)));
     }
+
+    @GetMapping(value = "/users/name/{username}", produces = MediaTypes.HAL_JSON_VALUE)
+    public ResponseEntity<Resource<User>> userInfoByName(@PathVariable(value = "username") String username) {
+        return ResponseEntity.ok(assembler.toResource(userService.getUserByUsername(username)));
+    }
+
+
 }

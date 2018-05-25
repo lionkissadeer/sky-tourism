@@ -1,7 +1,8 @@
-package com.skytech.skytourism.usermanagement.domain.reponse;
+package com.skytech.application.jwt.response;
 
-import com.skytech.skytourism.usermanagement.domain.jwt.AccessToken;
-import com.skytech.skytourism.usermanagement.domain.jwt.Audience;
+
+import com.skytech.application.jwt.AccessToken;
+import com.skytech.application.jwt.Audience;
 
 /**
  * Created by Lianhong_ on 2018/05/23 18:42

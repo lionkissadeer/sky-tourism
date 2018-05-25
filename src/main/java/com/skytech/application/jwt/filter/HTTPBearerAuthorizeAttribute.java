@@ -1,10 +1,10 @@
-package com.skytech.skytourism.usermanagement.domain.filter;
+package com.skytech.application.jwt.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.skytech.skytourism.usermanagement.domain.jwt.Audience;
-import com.skytech.skytourism.usermanagement.domain.jwt.JwtHelper;
-import com.skytech.skytourism.usermanagement.domain.reponse.ResultMessage;
-import com.skytech.skytourism.usermanagement.domain.reponse.ResultStatusCode;
+import com.skytech.application.jwt.Audience;
+import com.skytech.application.jwt.JwtHelper;
+import com.skytech.application.jwt.response.ResultMessage;
+import com.skytech.application.jwt.response.ResultStatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 

@@ -1,4 +1,4 @@
-package com.skytech.skytourism.usermanagement.domain.jwt;
+package com.skytech.application.jwt;
 
 /**
  * Created by Lianhong_ on 2018/05/23 18:06

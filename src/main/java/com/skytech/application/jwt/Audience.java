@@ -1,4 +1,4 @@
-package com.skytech.skytourism.usermanagement.domain.jwt;
+package com.skytech.application.jwt;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

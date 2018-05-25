@@ -1,10 +1,10 @@
-package com.skytech.skytourism.usermanagement.domain.jwt;
+package com.skytech.application.jwt;
 
 import com.skytech.application.aes.Aes;
+import com.skytech.application.jwt.response.ResultMessage;
+import com.skytech.application.jwt.response.ResultStatusCode;
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.repository.UserRepository;
-import com.skytech.skytourism.usermanagement.domain.reponse.ResultMessage;
-import com.skytech.skytourism.usermanagement.domain.reponse.ResultStatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

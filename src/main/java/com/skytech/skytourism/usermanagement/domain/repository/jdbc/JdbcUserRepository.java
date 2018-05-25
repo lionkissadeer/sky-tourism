@@ -30,8 +30,8 @@ public class JdbcUserRepository implements UserRepository {
     private IdentityGenerator identityGenerator;
 
 
-    private String getUsersSql = "select id, username," +
-            " gender, age, birthday, remark from user";
+    private String getUsersSql = "select id, username, password, " +
+            " gender, age, birthday, role, remark from user";
 
     @Override
     public List<User> getUsers() {
@@ -39,7 +39,7 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     private String findByIdSql = "select id, username, password, " +
-            "gender, age, birthday, remark from user where id = ?";
+            "gender, age, birthday, role, remark from user where id = ?";
 
     @Override
     public User findById(String id) {
@@ -56,13 +56,14 @@ public class JdbcUserRepository implements UserRepository {
             "values(:id, :username, :password, :gender, :age, :birthday, :remark)";
 
     @Override
-    public void saveUser(User user) {
+    public String saveUser(User user) {
         try {
             user.setId(identityGenerator.generate());
             namedParameterJdbcTemplate.update(insertUserSql, new BeanPropertySqlParameterSource(user));
         } catch (DataAccessException e) {
             logger.error("新增用户信息失败", e);
         }
+        return user.getId();
     }
 
     private String userIsExistSql = "select count(1) from user where username = ?";

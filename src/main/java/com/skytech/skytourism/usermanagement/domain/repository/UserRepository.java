@@ -13,7 +13,7 @@ public interface UserRepository {
 
     User findById(String id);
 
-    void saveUser(User user);
+    String saveUser(User user);
 
     boolean userIsExist(String username);
 

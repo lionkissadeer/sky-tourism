@@ -1,4 +1,4 @@
-package com.skytech.skytourism.usermanagement.domain.reponse;
+package com.skytech.application.jwt.response;
 
 /**
  * Created by Lianhong_ on 2018/05/23 18:29

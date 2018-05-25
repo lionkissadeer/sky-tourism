@@ -1,4 +1,4 @@
-package com.skytech.skytourism.usermanagement.domain.jwt;
+package com.skytech.application.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
