@@ -1,6 +1,5 @@
 package com.skytech.application.hateoas;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.hateoas.*;
 import org.springframework.hateoas.core.EvoInflectorRelProvider;

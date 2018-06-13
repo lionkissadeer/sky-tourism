@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+ 
 /**
  * Created by Lianhong_ on 2018/05/23 18:28
  */
@@ -36,7 +36,7 @@ public class JsonwebToken {
 
 
             //验证用户名密码
-            User user = userRepository.findUserByName(loginPara.getUserName());
+            User user = userRepository.findUserByName(loginPara.getUsername());
             if (user == null) {
                 resultMessage = new ResultMessage(ResultStatusCode.INVALID_PASSWORD.getCode(),
                         ResultStatusCode.INVALID_PASSWORD.getMessage());
@@ -52,7 +52,7 @@ public class JsonwebToken {
             }
 
             //拼装accessToken
-            String accessToken = JwtHelper.createJWT(loginPara.getUserName(), String.valueOf(user.getUsername()),
+            String accessToken = JwtHelper.createJWT(loginPara.getUsername(), String.valueOf(user.getUsername()),
                     user.getRole(), audienceEntity.getClientId(), audienceEntity.getName(),
                     audienceEntity.getExpiresSecond() * 1000, audienceEntity.getBase64Secret());
 
