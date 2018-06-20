@@ -30,7 +30,7 @@ public class GlobalControllerExceptionHandler {
         Set<ConstraintViolation<?>> errors = ex.getConstraintViolations();
         StringBuilder strBuilder = new StringBuilder();
         for (ConstraintViolation<?> violation : errors) {
-            strBuilder.append(violation.getMessage() + "\n");
+            strBuilder.append(violation.getMessage()).append("\n");
         }
         return RestServiceError.build("BAD_REQUEST", strBuilder.toString());
     }

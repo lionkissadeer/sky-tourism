@@ -1,0 +1,313 @@
+{
+  "front-version": "2.7.2",
+  "version": 3,
+  "nodes": [
+    {
+      "type": "Project",
+      "id": "D5D4C668-4874-4F9C-BBCE-FF67C3F7F945",
+      "lastModified": "2018-06-20T15:48:28.373+08:00",
+      "name": "skytourism"
+    },
+    {
+      "type": "Service",
+      "id": "CA3916EB-E78F-49B0-9124-4DED14E4B774",
+      "lastModified": "2018-06-20T15:35:31.813+08:00",
+      "name": "用户管理",
+      "parentId": "D5D4C668-4874-4F9C-BBCE-FF67C3F7F945"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"username\":\"lianhong\",\n  \"password\":\"p5KtAKYmwy4xjeLUJBNgow==\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{ip}:{port}",
+        "path": "/users"
+      },
+      "id": "496C5E45-C57D-4AB2-894D-52E8DBAFD3BC",
+      "lastModified": "2018-06-20T15:43:23.564+08:00",
+      "name": "用户列表",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVVNFUiIsInVuaXF1ZV9uYW1lIjoibGlhbmhvbmciLCJ1c2VyaWQiOiJsaWFuaG9uZyIsImlzcyI6IlJFU1RfQVBJX1VTRVIiLCJhdWQiOiIwOThmNmJjZDQ2MjFkMzczY2FkZTRlODMyNjI3YjRmNiIsImV4cCI6MTUyOTQ4MDY0NiwibmJmIjoxNTI5NDgwNTI2fQ.PIlq0NqOe3YZ96woikS7XC4FpuQ1yYPuqKZeyO9bh7w"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "CA3916EB-E78F-49B0-9124-4DED14E4B774"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"username\":\"Jack\",\n  \"password\":\"p5KtAKYmwy4xjeLUJBNgow==\",\n  \"gender\":\"1\",\n  \"birthday\":\"1988-09-19\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{ip}:{port}",
+        "path": "/register"
+      },
+      "id": "137C719D-2D64-4784-86C1-433C21999A22",
+      "lastModified": "2018-06-20T15:39:00.135+08:00",
+      "name": "用户注册",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "CA3916EB-E78F-49B0-9124-4DED14E4B774"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"username\":\"lianhong\",\n  \"password\":\"p5KtAKYmwy4xjeLUJBNgow==\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{ip}:{port}",
+        "path": "/users/login"
+      },
+      "id": "1EE52614-28CB-49E2-82FA-5FCA6CBEB623",
+      "lastModified": "2018-06-20T15:42:46.503+08:00",
+      "name": "用户登录",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVVNFUiIsInVuaXF1ZV9uYW1lIjoibGlhbmhvbmciLCJ1c2VyaWQiOiJsaWFuaG9uZyIsImlzcyI6IlJFU1RfQVBJX1VTRVIiLCJhdWQiOiIwOThmNmJjZDQ2MjFkMzczY2FkZTRlODMyNjI3YjRmNiIsImV4cCI6MTUyOTQ4MDY0NiwibmJmIjoxNTI5NDgwNTI2fQ.PIlq0NqOe3YZ96woikS7XC4FpuQ1yYPuqKZeyO9bh7w"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "CA3916EB-E78F-49B0-9124-4DED14E4B774"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"username\":\"lianhong\",\n  \"password\":\"p5KtAKYmwy4xjeLUJBNgow==\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{ip}:{port}",
+        "path": "/users/{id}"
+      },
+      "id": "0CEC5A76-7224-4E17-902D-31F7DB926B38",
+      "lastModified": "2018-06-20T15:48:13.693+08:00",
+      "name": "用户详细(Id)",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVVNFUiIsInVuaXF1ZV9uYW1lIjoibGlhbmhvbmciLCJ1c2VyaWQiOiJsaWFuaG9uZyIsImlzcyI6IlJFU1RfQVBJX1VTRVIiLCJhdWQiOiIwOThmNmJjZDQ2MjFkMzczY2FkZTRlODMyNjI3YjRmNiIsImV4cCI6MTUyOTQ4MDc4OCwibmJmIjoxNTI5NDgwNjY4fQ.lDmpwNfNJAJXZEh4pnlYKwlOTB_cXfRRYtfnWTbgVzk"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "CA3916EB-E78F-49B0-9124-4DED14E4B774"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"username\":\"lianhong\",\n  \"password\":\"p5KtAKYmwy4xjeLUJBNgow==\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{ip}:{port}",
+        "path": "/users/name/{username}"
+      },
+      "id": "3FD8FD46-21D0-44E3-BC34-D07CC7D1C38A",
+      "lastModified": "2018-06-20T15:48:28.374+08:00",
+      "name": "用户详细(Username)",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVVNFUiIsInVuaXF1ZV9uYW1lIjoibGlhbmhvbmciLCJ1c2VyaWQiOiJsaWFuaG9uZyIsImlzcyI6IlJFU1RfQVBJX1VTRVIiLCJhdWQiOiIwOThmNmJjZDQ2MjFkMzczY2FkZTRlODMyNjI3YjRmNiIsImV4cCI6MTUyOTQ4MDc4OCwibmJmIjoxNTI5NDgwNjY4fQ.lDmpwNfNJAJXZEh4pnlYKwlOTB_cXfRRYtfnWTbgVzk"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "CA3916EB-E78F-49B0-9124-4DED14E4B774"
+    },
+    {
+      "type": "Scenario",
+      "description": "",
+      "id": "FAD5DBAD-80B9-451A-9759-DFEBF997B097",
+      "lastModified": "2018-06-20T15:34:57.216+08:00",
+      "name": "JWT认证",
+      "requestOrder": [
+        "JWT认证"
+      ],
+      "parentId": "D5D4C668-4874-4F9C-BBCE-FF67C3F7F945"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"clientId\":\"098f6bcd4621d373cade4e832627b4f6\",\n  \"username\":\"lianhong\",\n  \"password\":\"p@ssw0rd\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "{ip}:{port}",
+        "path": "/oauth/token"
+      },
+      "description": "",
+      "id": "3D6B9F48-BFA4-4B56-80F5-78846D008816",
+      "lastModified": "2018-06-20T15:34:49.639+08:00",
+      "name": "JWT认证",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "FAD5DBAD-80B9-451A-9759-DFEBF997B097"
+    },
+    {
+      "type": "Context",
+      "id": "EAC83AFF-C4AC-44E9-8FDC-ED054FD68D2D",
+      "lastModified": "2018-06-20T15:46:58.617+08:00",
+      "name": "app",
+      "variables": [
+        {
+          "enabled": true,
+          "name": "ip",
+          "value": "127.0.0.1"
+        },
+        {
+          "enabled": true,
+          "name": "port",
+          "value": "80"
+        },
+        {
+          "enabled": true,
+          "name": "id",
+          "value": "dc5ed4787a4c7e8f"
+        },
+        {
+          "enabled": true,
+          "name": "username",
+          "value": "lianhong"
+        }
+      ]
+    }
+  ]
+}
