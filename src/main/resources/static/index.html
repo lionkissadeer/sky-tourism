@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <script type="text/javascript" src="javascript/vue/vue.js"></script>
+    <script type="text/javascript" src="javascript/vue/vue-resource.js"></script>
+    <script type="text/javascript" src="javascript/aes/aes.min.js"></script>
+    <script type="text/javascript" src="javascript/aes/_aes.js"></script>
+</head>
+<style>
+    #app {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 200px;
+        width: 200px;
+        margin-top: -100px;
+        margin-left: -100px;
+        text-align: center
+    }
+</style>
+<body>
+<div id="app">
+    <h1> {{ message }} </h1>
+</div>
+</body>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello world'
+        },
+        mounted: function () {
+            // this.message = _aes.encrypt("p@ssw0rd");
+        },
+        methods: {
+
+        }
+    });
+</script>
+</html>
