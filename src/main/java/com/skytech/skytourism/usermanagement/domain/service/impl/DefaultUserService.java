@@ -1,11 +1,10 @@
 package com.skytech.skytourism.usermanagement.domain.service.impl;
 
-import com.skytech.skytourism.usermanagement.domain.exception.UserException;
+import com.skytech.application.exceptionhandler.exception.ApplicationException;
 import com.skytech.skytourism.usermanagement.domain.model.User;
 import com.skytech.skytourism.usermanagement.domain.repository.UserRepository;
 import com.skytech.skytourism.usermanagement.domain.repository.jpa.JpaUserRepository;
 import com.skytech.skytourism.usermanagement.domain.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -35,7 +34,7 @@ public class DefaultUserService implements UserService {
     public User getUserBy(String id) {
         User user = userRepository.findById(id);
         if (user == null)
-            throw new UserException("getUserBy-001", "用户不存在。");
+            throw new ApplicationException("getUserBy-001", "用户不存在。");
         return user;
     }
 
@@ -44,24 +43,24 @@ public class DefaultUserService implements UserService {
         String username = user.getUsername();
         String password = user.getPassword();
         if (StringUtils.isEmpty(username))
-            throw new UserException("Register-001", "用户名不能为空。");
+            throw new ApplicationException("Register-001", "用户名不能为空。");
         if (StringUtils.isEmpty(password))
-            throw new UserException("Register-002", "密码不能为空。");
+            throw new ApplicationException("Register-002", "密码不能为空。");
         if (userRepository.userIsExist(username))
-            throw new UserException("Register-003", "用户名已存在。");
+            throw new ApplicationException("Register-003", "用户名已存在。");
         if (this.isSpecialChar(username))
-            throw new UserException("Register-004", "用户名存在非法字符。");
+            throw new ApplicationException("Register-004", "用户名存在非法字符。");
         return userRepository.findById(userRepository.saveUser(user));
     }
 
     @Override
     public User login(String username, String password) {
         if (StringUtils.isEmpty(username))
-            throw new UserException("Login-001", "用户名不能为空。");
+            throw new ApplicationException("Login-001", "用户名不能为空。");
         if (StringUtils.isEmpty(password))
-            throw new UserException("Login-002", "密码不能为空。");
+            throw new ApplicationException("Login-002", "密码不能为空。");
         if (!userRepository.userIsExist(username, password))
-            throw new UserException("Login-003", "用户不存在，请先注册。");
+            throw new ApplicationException("Login-003", "用户不存在，请先注册。");
         return jpaUserRepository.findBy(username);
     }
 
