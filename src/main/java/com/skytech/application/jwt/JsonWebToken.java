@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Lianhong_ on 2018/05/23 18:28
  */
 @RestController
-public class JsonwebToken {
+public class JsonWebToken {
+
     @Autowired
     private UserRepository userRepository;
 
